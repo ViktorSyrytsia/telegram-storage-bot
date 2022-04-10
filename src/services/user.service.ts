@@ -1,5 +1,5 @@
 import { AppDataSource } from "../db/datasource";
-import { User } from "../entity/User";
+import { User } from "../entity/User.entity";
 import { IUser } from "../models/user.interface";
 
 export async function findUser(id: number): Promise<User | null> {

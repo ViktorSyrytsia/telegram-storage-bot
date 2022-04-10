@@ -13,6 +13,7 @@ export async function fileLoader(ctx: Context<Update.MessageUpdate>) {
   if (!user) {
     createUser(ctx.message.from);
   }
+  console.log({ user });
 
   // Get variables fro m context
   const fileUrl = (ctx as unknown as ContextWithDB).db.file_url;
