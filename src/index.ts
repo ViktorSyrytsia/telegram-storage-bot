@@ -25,7 +25,10 @@ async function main() {
   // @ts-expect-error fixme
   bot.startWebhook(`${TELEGRAM_WEBHOOK_URL}`, null, PORT);
 
+  // STARS SERVER HERE
+
   bot.on("message", async (ctx) => fileLoader(ctx));
+
 }
 
 main();
