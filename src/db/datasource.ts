@@ -11,5 +11,5 @@ export const AppDataSource = new DataSource({
   url: DATABASE_URL,
   synchronize: true,
   logging: true,
-  entities: [join(__dirname, '**', '*.entity.{ts,js}')]
+  entities: [__dirname + '/../**/*.entity.{js,ts}']
 });
