@@ -1,6 +1,7 @@
 import { Context } from "telegraf";
 import { Message, Update } from "telegraf/typings/core/types/typegram";
 import { ContextWithDB } from "../models/context";
+import { createUser, findUser } from "../services/user.service";
 import { createDownloadUrl } from "../utils/create-download-url";
 import { createFolderName } from "../utils/create-folder-name";
 import { downloadFile } from "../utils/download-file";
@@ -8,6 +9,11 @@ import { getDocumentFromContext } from "../utils/get-document-from-context";
 import { getPhotoFromContext } from "../utils/get-photo-from-context";
 
 export async function fileLoader(ctx: Context<Update.MessageUpdate>) {
+  const user = await findUser(ctx.message.from.id);
+  if (!user) {
+    createUser(ctx.message.from);
+  }
+
   // Get variables fro m context
   const fileUrl = (ctx as unknown as ContextWithDB).db.file_url;
   const token = (ctx as unknown as ContextWithDB).db.token;
