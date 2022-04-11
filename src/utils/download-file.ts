@@ -10,9 +10,10 @@ const FOLDER_TO_SAVE = nconf.get("folder_to_save");
 export function downloadFile(
   url: string,
   folderName: string,
+  user: string,
   fileName?: string
 ): void {
-  const pathName = path.resolve(FOLDER_TO_SAVE, folderName);
+  const pathName = path.resolve(FOLDER_TO_SAVE, user, folderName);
   const name = (fileName as string) || "unknown_file" + Date.now();
   mkdir(pathName, { recursive: true }, (err: NodeJS.ErrnoException | null) => {
     if (!err) {
