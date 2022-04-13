@@ -1,0 +1,25 @@
+model User {
+  id          Int     @id @default(autoincrement())
+  telegram_id String  @unique
+  username    String?
+  active      Boolean
+}
+
+model File {
+  id         Int       @id @default(autoincrement())
+  author_id  String
+  file_name  String    @unique
+  created_at DateTime? @updatedAt
+  file_path  String
+  folder     String
+  thumb      String
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}

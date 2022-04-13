@@ -2,3 +2,5 @@
 /dist
 /stock
 config.json
+/prisma/migrations
+/prisma/dev.db
